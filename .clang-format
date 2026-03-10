@@ -1,0 +1,101 @@
+---
+# Omusubi C++ Formatting Style
+# Based on LLVM style with customizations for embedded C++ development
+
+Language: Cpp
+BasedOnStyle: LLVM
+
+# インデント設定
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 180
+
+# 中括弧の配置
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+RemoveBracesLLVM: false  # 中括弧の省略を禁止
+
+# ポインタと参照の配置
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# 名前空間
+NamespaceIndentation: None
+CompactNamespaces: false
+
+# インクルードの整理
+SortIncludes: CaseInsensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  # プロジェクトのヘッダー
+  - Regex:           '^"omusubi/'
+    Priority:        1
+  # システムヘッダー
+  - Regex:           '^<.*\.h>'
+    Priority:        2
+  # C++標準ライブラリ
+  - Regex:           '^<.*'
+    Priority:        3
+  # その他
+  - Regex:           '.*'
+    Priority:        4
+
+# アクセス修飾子
+AccessModifierOffset: -4
+
+# コンストラクタ初期化リスト
+ConstructorInitializerIndentWidth: 4
+BreakConstructorInitializers: BeforeColon
+
+# 関数引数
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+BinPackArguments: false
+BinPackParameters: false
+
+# 空行
+MaxEmptyLinesToKeep: 2  # 最大2行の空行を保持
+KeepEmptyLinesAtTheStartOfBlocks: false  # ブロック開始直後の空行は削除
+SeparateDefinitionBlocks: Always  # 定義ブロック間に空行
+# NOTE: if/for/while文の開き中括弧の前の行には空行を入れること（手動）
+# NOTE: 閉じ中括弧の後ろが閉じ中括弧でなければ空行を入れること（手動）
+# NOTE: return文の前に空行を入れること。ただしifブロックなどの中では無視（手動）
+
+# テンプレート
+AlwaysBreakTemplateDeclarations: Yes  # template<>の後ろは改行
+
+# 空行
+KeepEmptyLinesAtEOF: false
+
+# その他
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
+AlignOperands: Align
+AlignTrailingComments: true
+AllowShortBlocksOnASingleLine: Empty
+IndentCaseLabels: true
+SpaceAfterCStyleCast: false
+SpaceBeforeParens: ControlStatements
+SpacesInAngles: false
+Cpp11BracedListStyle: true  # 初期化子の{}の前にスペース1つ
+SpaceBeforeCpp11BracedList: true  # 初期化子の{}の前にスペース
+
+# ファイル末尾
+InsertNewlineAtEOF: true  # EOFでは必ず改行
